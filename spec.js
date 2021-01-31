@@ -1,5 +1,5 @@
 const { browser, $ } = require('protractor');
-describe('e2e booking and payment by card test', () => {
+describe('e2e logining, searching and booking tour test', () => {
     it('check login', async () => {
         await browser.get('https://phptravels.net');
         let accountMenuItem = $(':nth-child(3) > .dropdown > #dropdownCurrency');
@@ -27,21 +27,25 @@ describe('e2e booking and payment by card test', () => {
         let toursMenuItem = $('a[href="#tours"]');
         await browser.wait(expectElementToBeClickable(toursMenuItem));
         await toursMenuItem.click();
+        await expect(toursMenuItem.getAttribute('class')).toContain('active');
         let destinationInput = $('[role="tabpanel"][id="tours"] [class*="hotelsearch locationlisttours"] > input');
         await browser.wait(expectElementToBeClickable(destinationInput));
-        await destinationInput.sendKeys('Big Bus Tour of Dubai');
+        await destinationInput.sendKeys('Big Bus Tour Of Dubai');
         let destinationSearchResult = $('.select2-results-dept-1 > .select2-result-label');
         await browser.wait(expectElementToBeClickable(destinationSearchResult));
         await destinationSearchResult.click();
+        await expect($('[role="tabpanel"][id="tours"] [class*="hotelsearch locationlisttours"] > a').getText()).toEqual('Big Bus Tour Of Dubai');//check
         let chooseTourTypeList = $('#tourtype_chosen > .chosen-single > span');
         await browser.wait(expectElementToBeClickable(chooseTourTypeList));
         await chooseTourTypeList.click();
-        let chooseTourTypeItem4 = $('#tourtype_chosen [data-option-array-index="4"]');
-        await browser.wait(expectElementToBeClickable(chooseTourTypeItem4));
-        await chooseTourTypeItem4.click();
+        let chooseTourTypeItemFerry = $('#tourtype_chosen [data-option-array-index="4"]');
+        await browser.wait(expectElementToBeClickable(chooseTourTypeItemFerry));
+        await chooseTourTypeItemFerry.click();
+        await expect(chooseTourTypeList.getText()).toEqual('Ferry');
         let dateInput = $('#tours #DateTours');
         await browser.wait(expectElementToBeClickable(dateInput));
-        await dateInput.sendKeys('06.05.2021');
+        await dateInput.clear().sendKeys('06.05.2021');
+        await expect(dateInput.getAttribute('value')).toEqual('06.05.2021');
         let addAdultButton = $('#tours input[name="adults"] ~ .input-group-btn-vertical > button[class*="bootstrap-touchspin-up"]');
         await browser.wait(expectElementToBeClickable(addAdultButton));
         await addAdultButton.click();
@@ -56,22 +60,26 @@ describe('e2e booking and payment by card test', () => {
         if($('#cookyGotItBtnBox')){
             await $('#cookyGotItBtnBox button.cc-dismiss').click();
         }
+        await browser.wait(expectElementToBeClickable(bookTourButton));  
         await bookTourButton.click();
         let firstnameFormBookTour = $('#send_enquery input[name="firstname"]'); 
         await browser.wait(expectElementToBeClickable(firstnameFormBookTour));  
         await firstnameFormBookTour.sendKeys('Diana');
+        await expect(firstnameFormBookTour.getAttribute('value')).toEqual('Diana');
         let emailFormBookTour = $('#send_enquery input[name="email"]'); 
         await browser.wait(expectElementToBeClickable(emailFormBookTour));  
         await emailFormBookTour.sendKeys('dianapenfriend@yahoo.com');
+        await expect(emailFormBookTour.getAttribute('value')).toEqual('dianapenfriend@yahoo.com');
         let phoneFormBookTour = $('#send_enquery input[name="phone"]'); 
         await browser.wait(expectElementToBeClickable(phoneFormBookTour));  
         await phoneFormBookTour.sendKeys('+380501234567');
+        await expect(phoneFormBookTour.getAttribute('value')).toEqual('+380501234567');
         let addressFormBookTour= $('#send_enquery input[name="address"]'); 
         await browser.wait(expectElementToBeClickable(addressFormBookTour));  
         await addressFormBookTour.sendKeys('Kiev');
+        await expect(addressFormBookTour.getAttribute('value')).toEqual('Kiev');
         let buttonOkFormBookTour= $('#send_enquery #ClickMyButton'); 
         await browser.wait(expectElementToBeClickable(buttonOkFormBookTour));  
         await buttonOkFormBookTour.click();
     })
-
 })
