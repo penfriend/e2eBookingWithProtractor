@@ -2,12 +2,11 @@ exports.config = {
     framework: 'jasmine',
     seleniumAddress: 'http://localhost:4444/wd/hub',
     SELENIUM_PROMISE_MANAGER: false,
-    specs: ['spec.js'],
+    specs: ['./tests/mainSpec.js'],
     onPrepare(){
-      const { browser, protractor } = require('protractor');
+      const { browser } = require('protractor');
       const {cfDecodeEmail} = require('./init');
       const axios = require('axios');
-      global.expectElementToBeClickable = (...args) => protractor.ExpectedConditions.elementToBeClickable(...args);
       browser.params.CREDENTIALS = {};
       browser.driver.manage().timeouts().implicitlyWait(10000);
       axios.get("https://phptravels.com/demo/").then(response => {
