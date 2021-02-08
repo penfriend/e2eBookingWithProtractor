@@ -24,10 +24,10 @@ class Element {
         return this.waitElementToBeClickable(element).then(() => element.sendKeys(value));
     }
     getAttribute(value, element = this.get()){
-        return this.get().getAttribute(value);
+        return this.waitElementToBeClickable(element).then(() => element.getAttribute(value));
     }
     moveToElement(element = this.get()){
-        browser.driver.actions().mouseMove(element).perform();
+        return browser.executeScript('arguments[0].scrollIntoView(false)',element);
     }
 }
 module.exports = { Element }
