@@ -2,8 +2,9 @@
 set SERVER_VERSION=3.141.59
 set REGISTER_IP=localhost:4444
 set CHROME_DRIVER=.\webdrivers\chromedriver_88.0.4324.96.exe
+set GECKO_DRIVER=.\webdrivers\geckodriver-v0.29.0.exe
 set NODE_CONFIG=node_2-config.json
 
-java -Dwebdriver.chrome.driver=%CHROME_DRIVER% -jar selenium-server-standalone-%SERVER_VERSION%.jar -role node -hub http://%REGISTER_IP%/grid/register -nodeConfig %NODE_CONFIG%
+java -Dwebdriver.gecko.driver=%GECKO_DRIVER% -Dwebdriver.chrome.driver=%CHROME_DRIVER% -jar selenium-server-standalone-%SERVER_VERSION%.jar -role node -hub http://%REGISTER_IP%/grid/register -nodeConfig %NODE_CONFIG%
 :: End of hub batch file
 pause
