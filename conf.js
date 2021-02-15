@@ -1,12 +1,18 @@
 exports.config = {
   multiCapabilities: [
-    {'browserName': 'chrome'},
-    {'browserName': 'firefox'}
+    {
+      browserName: 'chrome',
+      specs: ['./tests/mainSpec.js'],
+    },
+    {
+      browserName: 'firefox',
+      specs: ['./tests/mainSpecCopy.js'],
+    }
   ],
   framework: 'jasmine',
   seleniumAddress: 'http://localhost:4444/wd/hub',
   SELENIUM_PROMISE_MANAGER: false,
-  specs: ['./tests/mainSpec.js'],
+  specs: [],
   onPrepare(){
     const { browser } = require('protractor');
     const {cfDecodeEmail} = require('./init');
