@@ -27,7 +27,14 @@ class Element {
         return this.waitElementToBeClickable(element).then(() => element.getAttribute(value));
     }
     moveToElement(element = this.get()){
-        return browser.executeScript('arguments[0].scrollIntoView(false)',element);
+        return browser.getCapabilities().then((cap) => {
+           if(cap.map_.get('browserName') === 'firefox') {
+               return browser.executeScript('arguments[0].scrollIntoView(false)',element);
+           }
+           if(cap.map_.get('browserName') === 'chrome'){
+               return browser.driver.actions().mouseMove(element).perform();
+           } 
+        })
     }
 }
 module.exports = { Element }
