@@ -1,8 +1,8 @@
 :: Beginning of node batch file
 @echo off
-for /f "tokens=*" %%a in ('dir .\webdrivers-and-server\selenium-server-standalone*.jar /b /s') do set SELENIUM-SERVER=%%a
-for /f "tokens=*" %%b in ('dir .\webdrivers-and-server\chromedriver*.exe /b /s') do set CHROME_DRIVER=%%b
-for /f "tokens=*" %%c in ('dir .\webdrivers-and-server\geckodriver*.exe /b /s') do set GECKO_DRIVER=%%c
+for /f "tokens=*" %%a in ('dir ..\node_modules\protractor\node_modules\webdriver-manager\selenium\selenium-server-standalone*.jar /b /s') do set SELENIUM-SERVER=%%a
+for /f "tokens=*" %%b in ('dir ..\node_modules\protractor\node_modules\webdriver-manager\selenium\chromedriver*.exe /b /s') do set CHROME_DRIVER=%%b
+for /f "tokens=*" %%c in ('dir ..\node_modules\protractor\node_modules\webdriver-manager\selenium\geckodriver*.exe /b /s') do set GECKO_DRIVER=%%c
 set REGISTER_IP=localhost:4444
 set NODE_CONFIG=node_2-config.json
 @echo on

@@ -7,7 +7,7 @@
     "pretest": "node ./tests/utils/cleanup/logsCleaner.js",
     "test": "node ./node_modules/protractor/bin/protractor ./tests/config/conf.js",
     "start": "node ./node_modules/protractor/bin/webdriver-manager start",
-    "postinstall": "cd grid && prepare_grid.bat"
+    "postinstall": "node ./node_modules/protractor/bin/webdriver-manager update"
   },
   "author": "Diana Holik",
   "license": "MIT",
