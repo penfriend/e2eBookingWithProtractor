@@ -1,8 +1,10 @@
 const { $, protractor, browser } = require('protractor');
+const logger = require('../../config/logger.config');
 
 class Element {
     constructor(selector) {
         this._selector = $(selector);
+        this.selectorName = selector;
     }
 
     get() {
@@ -14,6 +16,7 @@ class Element {
     }
 
     click(element = this.get()) {
+        logger.info(`Clicking ${this.selectorName}`);
         return this.waitElementToBeClickable(element).then(() => element.click())
     }
 
@@ -21,6 +24,7 @@ class Element {
         return this.waitElementToBeClickable(element).then(() => element.getText());
     }
     sendKeys(value, element = this.get()) {
+        logger.info(`${value} was typed into the ${this.selectorName}`);
         return this.waitElementToBeClickable(element).then(() => element.sendKeys(value));
     }
     getAttribute(value, element = this.get()){
@@ -29,9 +33,11 @@ class Element {
     moveToElement(element = this.get()){
         return browser.getCapabilities().then((cap) => {
            if(cap.map_.get('browserName') === 'firefox') {
+            logger.info(`Scrolling to the ${this.selectorName}`);
                return browser.executeScript('arguments[0].scrollIntoView(false)',element);
            }
            if(cap.map_.get('browserName') === 'chrome'){
+            logger.info(`Scrolling to the ${this.selectorName}`);
                return browser.driver.actions().mouseMove(element).perform();
            } 
         })

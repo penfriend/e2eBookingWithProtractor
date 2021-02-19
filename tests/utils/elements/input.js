@@ -1,4 +1,5 @@
 const { Element } = require('./element');
+const logger = require('../../config/logger.config');
 
 class Input extends Element {
     getText() {
@@ -7,6 +8,7 @@ class Input extends Element {
     sendKeys(value, element = this.get()) {
         return this.waitElementToBeClickable(element).then(() => {
             element.clear().sendKeys(value);
+            logger.info(`${this.selectorName} was cleared and typed the text ${value}`);
         });
     }
 }

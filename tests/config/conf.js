@@ -2,14 +2,14 @@ exports.config = {
   multiCapabilities: [
     {
       browserName: 'chrome',
-      specs: ['./tests/mainSpec.js'],
+      specs: ['../specs/mainSpec.js'],
       chromeOptions: {
         w3c: false,
       }
     },
     {
       browserName: 'firefox',
-      specs: ['./tests/mainSpecCopy.js'],
+      specs: ['../specs/mainSpecCopy.js'],
     }
   ],
   framework: 'jasmine',

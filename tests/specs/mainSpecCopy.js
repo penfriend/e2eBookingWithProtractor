@@ -1,7 +1,7 @@
-const { BigBusTourPage } = require('./pages/bigBusTourPage');
-const { DemoUserPage } = require('./pages/demoUserPage');
-const { LoginPage } = require('./pages/loginPage');
-const { MainPage } = require('./pages/mainPage');
+const { BigBusTourPage } = require('../utils/pages/bigBusTourPage');
+const { DemoUserPage } = require('../utils/pages/demoUserPage');
+const { LoginPage } = require('../utils/pages/loginPage');
+const { MainPage } = require('../utils/pages/mainPage');
 
 describe('e2e logining, searching and booking tour test', () => {
     const mainPage = new MainPage();

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 1. NODE version >=8.9.1
-2. Git
+2. Java version >=8
 
 ## Install
 ```
