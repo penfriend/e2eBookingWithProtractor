@@ -3,6 +3,9 @@ exports.config = {
     {
       browserName: 'chrome',
       specs: ['./tests/mainSpec.js'],
+      chromeOptions: {
+        w3c: false,
+      }
     },
     {
       browserName: 'firefox',
