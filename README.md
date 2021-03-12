@@ -20,7 +20,7 @@ npm install
 1. To run server before running test you need to open the terminal in the root project folder and type command: ```npm run start```
 2. To run tests you need to open another terminal in the root project folder and type command: ```npm run test```
 2.1 You can type specify your values of email and password for user to login by typing the command: 
-```npm run test --email TypeUserEmail --password TypeUserPassword```
+```npm run test -- --email "TypeUserEmail" --password "TypeUserPassword" --tags "@tagName" --instances instancesNumber```
 
 ## Open grid console
 ```

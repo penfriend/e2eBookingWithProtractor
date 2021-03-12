@@ -7,7 +7,7 @@ class CookiesModalBlock extends Element {
     }
 
     dismiss() {
-        return this.get().isPresent().then(isTrue => {
+        return this.get().isDisplayed().then(isTrue => {
             if (isTrue) {
                 logger.info(`Cookies Modal Block was dismissed`);
                 return this.waitElementToBeClickable().then(() => {
