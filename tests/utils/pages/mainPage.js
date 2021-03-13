@@ -23,4 +23,5 @@ class MainPage extends BasePage {
         return linkToEnableDestinationInput.click();
     }
 }
-module.exports = { MainPage }
+const mainPage = new MainPage();
+module.exports = { mainPage }
