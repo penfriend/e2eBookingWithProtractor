@@ -1,5 +1,14 @@
 const path = require('path');
 const yargs = require('yargs').argv;
+const reporter = require('cucumber-html-reporter');
+ 
+const reporterOptions = {
+        theme: 'bootstrap',
+        jsonFile: path.join(__dirname, '../../reports/report.json'),
+        output: path.join(__dirname, '../../reports/cucumber_report.html'),
+        reportSuiteAsScenarios: true,
+        launchReport: true
+    };
 
 exports.config = {
   allScriptsTimeout: 60000,
@@ -21,7 +30,8 @@ exports.config = {
   cucumberOpts: {
     require: [path.resolve('./tests/step_definitions/**/*.js')],
     ignoreUncaughtExceptions: true,
-    format: [
+    format: [ 
+      'json:./reports/report.json',
      './node_modules/cucumber-pretty'],
     tags: yargs.tags || '@login or @booking_tour'
   },
@@ -37,5 +47,8 @@ exports.config = {
       browser.params.CREDENTIALS.password = yargs.password || credo.match(/Password[\<,\/,\>a-z]*\s{1}[a-z\d]*/gi)[0].split(' ')[1];
     });
     return browser.waitForAngularEnabled(false);
+  },
+  afterLaunch: () => {
+    return reporter.generate(reporterOptions);
   }
 };

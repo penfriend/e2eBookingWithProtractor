@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "node ./tests/utils/cleanup/logsCleaner.js",
+    "pretest": "node ./tests/utils/cleanup/logsCleaner.js && node ./tests/utils/cleanup/reportsCleaner.js",
     "test": "node ./node_modules/protractor/bin/protractor ./tests/config/conf.js",
     "start": "node ./node_modules/protractor/bin/webdriver-manager start",
     "postinstall": "node ./node_modules/protractor/bin/webdriver-manager update"
