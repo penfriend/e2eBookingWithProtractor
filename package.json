@@ -6,12 +6,15 @@
   "scripts": {
     "pretest": "node ./tests/utils/cleanup/logsCleaner.js",
     "test": "node ./node_modules/protractor/bin/protractor ./tests/config/conf.js --",
+    "test:mobile": "node ./node_modules/protractor/bin/protractor ./tests/config/appium_protractor.config.js",
+    "pretest:mobile": "node ./tests/utils/cleanup/logsCleaner.js",
     "start": "node ./node_modules/protractor/bin/webdriver-manager start",
     "postinstall": "node ./node_modules/protractor/bin/webdriver-manager update"
   },
   "author": "Diana Holik",
   "license": "MIT",
   "devDependencies": {
+    "appium": "^1.20.2",
     "axios": "^0.21.1",
     "fs-extra": "^9.1.0",
     "protractor": "^7.0.0",

@@ -22,6 +22,10 @@ npm install
 2.1 You can type specify your values of email and password for user to login by typing the command: 
 ```npm run test --email TypeUserEmail --password TypeUserPassword```
 
+## Run test on the Android using Chrome browser
+1. To run server before running test you need to open the terminal in the root project folder and type command: ```npx appium --chromedriver-executable .\node_modules\appium\node_modules\appium-chromedriver\chromedriver\win\chromedriver.exe```
+2. To run tests you need to open another terminal in the root project folder and type command: ```npm run test:mobile```
+
 ## Open grid console
 ```
 http://localhost:4444/grid/console

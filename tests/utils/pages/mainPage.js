@@ -4,7 +4,7 @@ const { Input } = require('../elements/input');
 const { BasePage } = require('./basePage');
 
 class MainPage extends BasePage {
-    baseUrl = 'https://phptravels.net';
+    baseUrl = 'https://www.phptravels.net/en';
     toursMenuItem = new Element('a[href="#tours"]');
     destinationInput = new Input('#select2-drop > div:nth-child(1) > input');
     destinationSearchResult = new Element('.select2-results-dept-1 > .select2-result-label:nth-child(1)');
@@ -16,10 +16,10 @@ class MainPage extends BasePage {
     searchButton = new Element('#tours button[type="submit"]');
 
     navigate() {
-        browser.get(this.baseUrl);
+        return browser.get(this.baseUrl);
     }
     enabletoSetValueToDestinationInput(){
-        const linkToEnableDestinationInput = new Element('#s2id_autogen22 > a');
+        const linkToEnableDestinationInput = new Element('#tours div.hotelsearch.locationlisttours');
         return linkToEnableDestinationInput.click();
     }
 }

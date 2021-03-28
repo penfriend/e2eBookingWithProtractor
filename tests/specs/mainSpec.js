@@ -22,16 +22,16 @@ describe('e2e logining, searching and booking tour test', () => {
     it('check the search for the tour', async () => {
         await mainPage.navigate();
         await mainPage.toursMenuItem.click();
-        await expect(mainPage.toursMenuItem.get().getAttribute('class')).toContain('active');
+        await expect(await mainPage.toursMenuItem.get().getAttribute('class')).toContain('active');
         await mainPage.enabletoSetValueToDestinationInput();
         await mainPage.destinationInput.sendKeys(expectedData.tourDestination);
         await mainPage.destinationSearchResult.click();
-        await expect(mainPage.destinationSearchResultText.getText()).toEqual(expectedData.tourDestination);
+        await expect(await mainPage.destinationSearchResultText.getText()).toEqual(expectedData.tourDestination);
         await mainPage.chooseTourTypeList.click();
         await mainPage.chooseTourTypeItemFerry.click();
-        await expect(mainPage.chooseTourTypeList.getText()).toEqual(expectedData.tourType);
+        await expect(await mainPage.chooseTourTypeList.getText()).toEqual(expectedData.tourType);
         await mainPage.dateInput.sendKeys(expectedData.tourDate);
-        await expect(mainPage.dateInput.getAttribute('value')).toEqual(expectedData.tourDate);
+        await expect(await mainPage.dateInput.getAttribute('value')).toEqual(expectedData.tourDate);
         await mainPage.addAdultButton.click();
         await mainPage.searchButton.click();
     })
